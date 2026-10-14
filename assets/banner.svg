@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050814" />
+      <stop offset="40%" stop-color="#0b1329" />
+      <stop offset="80%" stop-color="#0e1b3a" />
+      <stop offset="100%" stop-color="#070a17" />
+    </linearGradient>
+
+    <linearGradient id="accent-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="45%" stop-color="#a78bfa" />
+      <stop offset="85%" stop-color="#f472b6" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="card-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Filters for Glow -->
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="glow-purple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Background Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.7" stroke-opacity="0.6" />
+    </pattern>
+
+    <style>
+      @keyframes pulseSlow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.75; transform: scale(1.08); }
+      }
+      @keyframes dashFlow {
+        to { stroke-dashoffset: -80; }
+      }
+      @keyframes floatSoft {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+      }
+      @keyframes floatSoftRev {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(5px); }
+      }
+      @keyframes scanline {
+        0% { transform: translateY(-360px); opacity: 0; }
+        50% { opacity: 0.4; }
+        100% { transform: translateY(360px); opacity: 0; }
+      }
+      .pulse-node-1 { animation: pulseSlow 4s ease-in-out infinite; transform-origin: 180px 80px; }
+      .pulse-node-2 { animation: pulseSlow 5s ease-in-out infinite 1.5s; transform-origin: 1020px 280px; }
+      .pulse-node-3 { animation: pulseSlow 4.5s ease-in-out infinite 0.7s; transform-origin: 1050px 70px; }
+      .flow-path { stroke-dasharray: 8 6; animation: dashFlow 3s linear infinite; }
+      .pill-float-1 { animation: floatSoft 4s ease-in-out infinite; }
+      .pill-float-2 { animation: floatSoftRev 4.5s ease-in-out infinite 0.5s; }
+      .pill-float-3 { animation: floatSoft 5s ease-in-out infinite 1s; }
+      .scan-bar { animation: scanline 7s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1200" height="360" fill="url(#bg-grad)" rx="16" />
+  <rect width="1200" height="360" fill="url(#grid)" rx="16" />
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="160" cy="70" r="140" fill="#38bdf8" fill-opacity="0.12" filter="url(#glow-cyan)" />
+  <circle cx="1040" cy="290" r="160" fill="#8b5cf6" fill-opacity="0.15" filter="url(#glow-purple)" />
+  <circle cx="1060" cy="60" r="100" fill="#ec4899" fill-opacity="0.12" filter="url(#glow-purple)" />
+
+  <!-- Animated Circuit & Data Flow Lines (Background Dynamic Layer) -->
+  <g opacity="0.6">
+    <path class="flow-path" d="M 50 180 Q 200 80 340 140 T 600 120 T 860 140 T 1150 180" fill="none" stroke="#38bdf8" stroke-width="1.8" />
+    <path class="flow-path" d="M 50 210 Q 220 280 380 230 T 680 240 T 920 220 T 1150 200" fill="none" stroke="#a855f7" stroke-width="1.8" style="animation-direction: reverse; stroke-dasharray: 6 5;" />
+    
+    <!-- Connection Nodes -->
+    <circle cx="180" cy="80" r="5" fill="#38bdf8" class="pulse-node-1" filter="url(#glow-cyan)" />
+    <circle cx="1020" cy="280" r="6" fill="#c084fc" class="pulse-node-2" filter="url(#glow-purple)" />
+    <circle cx="1050" cy="70" r="5" fill="#f472b6" class="pulse-node-3" filter="url(#glow-cyan)" />
+  </g>
+
+  <!-- Floating Tech Badges (Non-overlapping positions on upper sides) -->
+  <g class="pill-float-1" transform="translate(60, 42)">
+    <rect width="145" height="30" rx="15" fill="#0f172a" fill-opacity="0.85" stroke="#38bdf8" stroke-width="1.2" />
+    <circle cx="18" cy="15" r="4" fill="#38bdf8" />
+    <text x="32" y="19" fill="#93c5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">👁️ VISION (RGB-D)</text>
+  </g>
+
+  <g class="pill-float-2" transform="translate(995, 42)">
+    <rect width="145" height="30" rx="15" fill="#0f172a" fill-opacity="0.85" stroke="#a855f7" stroke-width="1.2" />
+    <circle cx="18" cy="15" r="4" fill="#c084fc" />
+    <text x="32" y="19" fill="#e9d5ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">🦾 MOTOR ACTION</text>
+  </g>
+
+  <!-- Central Foreground Shield / Backdrop (Guarantees Title & Subtitle Legibility) -->
+  <g transform="translate(130, 75)">
+    <rect width="940" height="210" rx="16" fill="#080e1e" fill-opacity="0.88" stroke="url(#card-border)" stroke-width="1.5" />
+    
+    <!-- Top Meta Tag / Pill -->
+    <g transform="translate(325, 20)">
+      <rect width="290" height="26" rx="13" fill="#1e293b" fill-opacity="0.9" stroke="#6366f1" stroke-width="1" />
+      <text x="145" y="17" fill="#a5b4fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1.2">🤖 EMBODIED AI • ROBOT FOUNDATION MODELS</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="470" y="86" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="34" font-weight="900" fill="url(#title-grad)" letter-spacing="-0.5">
+      Awesome Vision-Language-Action Models
+    </text>
+
+    <!-- Subtitle -->
+    <text x="470" y="118" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="500" fill="#cbd5e1" letter-spacing="0.2">
+      Curated Ecosystem of Generalist Robot Policies, Open-Source VLA Architectures &amp; Embodied SaaS
+    </text>
+
+    <!-- Architecture Pipeline Flow Visual -->
+    <g transform="translate(160, 146)">
+      <!-- Step 1: Perception -->
+      <rect x="0" y="0" width="160" height="34" rx="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.2" />
+      <text x="80" y="21" text-anchor="middle" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11.5" font-weight="700">📷 Visual Perception</text>
+
+      <!-- Arrow 1 -->
+      <path d="M 172 17 L 198 17 M 194 12 L 200 17 L 194 22" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+      <!-- Step 2: Language & Reasoning -->
+      <rect x="210" y="0" width="190" height="34" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.2" />
+      <text x="305" y="21" text-anchor="middle" fill="#c4b5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11.5" font-weight="700">🧠 LLM/VLM Reasoning</text>
+
+      <!-- Arrow 2 -->
+      <path d="M 412 17 L 438 17 M 434 12 L 440 17 L 434 22" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+      <!-- Step 3: Action Control -->
+      <rect x="450" y="0" width="170" height="34" rx="8" fill="#0f172a" stroke="#ec4899" stroke-width="1.2" />
+      <text x="535" y="21" text-anchor="middle" fill="#f472b6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11.5" font-weight="700">⚡ Visuomotor Action</text>
+    </g>
+  </g>
+
+  <!-- Bottom Pills (Category Indicators) -->
+  <g class="pill-float-3" transform="translate(180, 305)">
+    <rect width="180" height="26" rx="13" fill="#091024" stroke="#1e293b" stroke-width="1" />
+    <text x="90" y="17" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600">🚀 OpenVLA • π₀ • Octo</text>
+  </g>
+
+  <g class="pill-float-2" transform="translate(510, 305)">
+    <rect width="180" height="26" rx="13" fill="#091024" stroke="#1e293b" stroke-width="1" />
+    <text x="90" y="17" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600">🌐 Cross-Embodiment</text>
+  </g>
+
+  <g class="pill-float-1" transform="translate(840, 305)">
+    <rect width="180" height="26" rx="13" fill="#091024" stroke="#1e293b" stroke-width="1" />
+    <text x="90" y="17" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600">🎯 Flow Matching &amp; Diffusion</text>
+  </g>
+</svg>
